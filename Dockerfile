@@ -9,18 +9,17 @@ RUN apt-get update
 # =========================================
 # Install dependencies
 # =========================================
-RUN apt-get install -y \
-    libfreetype6-dev \
+RUN apt-get install -y libfreetype6-dev \
     libicu-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
     libxslt1-dev \
     libzip-dev \
-    pdftk \
     sudo \
     libmagickwand-dev \
     libmagickcore-dev \
-    apt-transport-https
+    apt-transport-https \
+    libonig-dev
 
 # =========================================
 # Install tools
@@ -34,7 +33,7 @@ RUN apt-get install -y \
 # Configure the GD library
 # =========================================
 RUN docker-php-ext-configure \
-    gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+    gd
 
 # =========================================
 # Install php required extensions
@@ -84,7 +83,6 @@ ADD ./bashrc.mflasquin /home/mflasquin/.bashrc
 # =========================================
 # PHP Configuration
 # =========================================
-ADD etc/php-xdebug.ini /usr/local/etc/php/conf.d/zz-xdebug-settings.ini
 ADD etc/php-fpm.conf /usr/local/etc/
 ADD etc/php-fpm.ini /usr/local/etc/php/conf.d/zz-custom.ini
 
