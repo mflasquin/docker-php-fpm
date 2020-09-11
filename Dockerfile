@@ -33,7 +33,7 @@ RUN apt-get install -y \
 # Configure the GD library
 # =========================================
 RUN docker-php-ext-configure \
-    gd
+    gd --with-freetype --with-jpeg
 
 # =========================================
 # Install php required extensions
