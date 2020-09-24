@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:5.6-fpm
 LABEL maintainer="Maxime Flasquin contact@mflasquin.fr"
 
 # =========================================
@@ -51,11 +51,6 @@ RUN docker-php-ext-install \
   mysqli \
   sockets \
   exif
-
-# =========================================
-# Install apcu
-# =========================================
-RUN pecl install -f apcu
 
 # =========================================
 # Install imagick
